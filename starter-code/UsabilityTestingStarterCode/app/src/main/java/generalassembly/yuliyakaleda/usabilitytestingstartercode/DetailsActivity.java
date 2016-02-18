@@ -23,4 +23,5 @@ public class DetailsActivity extends AppCompatActivity {
       startActivity(browserIntent);
     }
   }
+
 }

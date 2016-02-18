@@ -1,19 +1,22 @@
 package generalassembly.yuliyakaleda.usabilitytestingstartercode;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class ListFragment extends Fragment {
-  private static final String SIGN = "sign";
+//  private static final String SIGN = "sign";
   private ListView listView;
 
   @Nullable @Override
@@ -24,12 +27,15 @@ public class ListFragment extends Fragment {
     return view;
   }
 
+
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     String[] values = getResources().getStringArray(R.array.signs);
     ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
         android.R.layout.simple_list_item_1, android.R.id.text1, values);
+    TextView textView = (TextView) view.findViewById(android.R.id.text1);
+    textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     listView.setAdapter(adapter);
 
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,9 +47,11 @@ public class ListFragment extends Fragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String itemValue = (String) listView.getItemAtPosition(position);
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(SIGN, itemValue);
-        startActivity(intent);
+//        Intent intent = new Intent(getActivity(), DetailsActivity.class);
+//        intent.putExtra(SIGN, itemValue);
+//        startActivity(intent);
+        Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + itemValue + "/"));
+        startActivity(i);
       }
     });
   }
