@@ -1,9 +1,12 @@
 package generalassembly.yuliyakaleda.usabilitytestingstartercode;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,19 +34,27 @@ public class ListFragment extends Fragment {
     ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
         android.R.layout.simple_list_item_1, android.R.id.text1, values);
     listView.setAdapter(adapter);
+    final int screenSize = getResources().getConfiguration().screenLayout &
+            Configuration.SCREENLAYOUT_SIZE_MASK;
 
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       // TODO: Write the logic that will check if the DetailsFragment is present next to the
       // TODO: ListFragment or not. If it is not (it is a handset), start DetailsActivity. If
       // TODO: it is present, get reference to DetailsFragment and call a method on it that will
       // TODO: open a webview with the information about the clicked sign.
-
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String itemValue = (String) listView.getItemAtPosition(position);
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(SIGN, itemValue);
-        startActivity(intent);
+        if (screenSize == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+
+          String itemValue = (String) listView.getItemAtPosition(position);
+          DetailsFragment detailsFragment = new DetailsFragment();
+          detailsFragment.updateContent(itemValue);
+
+        } else {
+          String itemValue = (String) listView.getItemAtPosition(position);
+          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + itemValue + "/"));
+          startActivity(browserIntent);
+        }
       }
     });
   }

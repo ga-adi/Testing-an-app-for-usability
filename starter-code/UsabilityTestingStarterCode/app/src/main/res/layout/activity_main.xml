@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment class="generalassembly.yuliyakaleda.usabilitytestingstartercode.ListFragment"
-        android:id="@+id/list_frag"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/listContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></FrameLayout>
 
 </FrameLayout>
