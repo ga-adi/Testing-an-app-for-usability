@@ -2,17 +2,17 @@
   <string name="app_name">UsabilityTestingStarterCode</string>
   <string name="action_settings">Settings</string>
   <string-array name="signs">
-    <item>aries</item>
-    <item>taurus</item>
-    <item>gemini</item>
-    <item>cancer</item>
-    <item>leo</item>
-    <item>virgo</item>
-    <item>libra</item>
-    <item>scorpio</item>
-    <item>sagittarius</item>
-    <item>capricorn</item>
-    <item>aquarius</item>
-    <item>pisces</item>
+    <item>Aries: March 21 - April 19</item>
+    <item>Taurus: April 20 - May 20</item>
+    <item>Gemini: May 21 - June 20</item>
+    <item>Cancer: June 21 - July 22</item>
+    <item>Leo: July 23 - August 22</item>
+    <item>Virgo: August 23 - September 22</item>
+    <item>Libra: September 23 - October 22</item>
+    <item>Scorpio: October 23 - November 21</item>
+    <item>Sagittarius: November 22 - December 21</item>
+    <item>Capricorn: December 22 - January 19</item>
+    <item>Aquarius: January 20 - February 18</item>
+    <item>Pisces: February 19 - March 20</item>
   </string-array>
 </resources>
