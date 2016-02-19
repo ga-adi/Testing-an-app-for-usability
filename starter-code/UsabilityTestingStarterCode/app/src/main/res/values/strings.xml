@@ -1,18 +1,18 @@
 <resources>
-  <string name="app_name">UsabilityTestingStarterCode</string>
+  <string name="app_name">YOUR HOROSCOPE</string>
   <string name="action_settings">Settings</string>
   <string-array name="signs">
-    <item>aries</item>
-    <item>taurus</item>
-    <item>gemini</item>
-    <item>cancer</item>
-    <item>leo</item>
-    <item>virgo</item>
-    <item>libra</item>
-    <item>scorpio</item>
-    <item>sagittarius</item>
-    <item>capricorn</item>
-    <item>aquarius</item>
-    <item>pisces</item>
+    <item>aries (March 21 - April 19) </item>
+    <item>taurus (April 20 - May 20)</item>
+    <item>gemini (May 21 - June 21) </item>
+    <item>cancer (June 22 - July 22)</item>
+    <item>leo (July 23 - August 22)</item>
+    <item>virgo (August 23 - September 22)</item>
+    <item>libra (September 23 - October 22)</item>
+    <item>scorpio (October 23 - November 21)</item>
+    <item>sagittarius (November 22 - December 21)</item>
+    <item>capricorn (December 22 - January 19)</item>
+    <item>aquarius (January 20 - February 18)</item>
+    <item>pisces (February 19 - March 20)</item>
   </string-array>
 </resources>

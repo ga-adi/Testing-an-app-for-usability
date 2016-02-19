@@ -1,6 +1,8 @@
 package generalassembly.yuliyakaleda.usabilitytestingstartercode;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,10 +42,44 @@ public class ListFragment extends Fragment {
 
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String itemValue = (String) listView.getItemAtPosition(position);
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(SIGN, itemValue);
-        startActivity(intent);
+
+        int currentOrientation = ListFragment.this.getActivity().getResources().getConfiguration().orientation;
+        if(currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+          String input = (String) listView.getItemAtPosition(position);
+          String[] sign = input.split(" ");
+          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + sign[0] + "/"));
+          browserIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+          startActivity(browserIntent);
+
+        }else{
+
+          Fragment f = getFragmentManager().findFragmentById(R.id.detail_frag);
+          String input = (String) listView.getItemAtPosition(position);
+          String[] sign = input.split(" ");
+          DetailsFragment df = (DetailsFragment)f;
+          df.updateContent(sign[0]);
+//          if(f!=null){
+//            Toast.makeText(ListFragment.this.getContext(), "FRAGMENT NOT NULL", Toast.LENGTH_SHORT).show();
+//          }else{
+//            Toast.makeText(ListFragment.this.getContext(), "FRAGMENT IS NULL", Toast.LENGTH_SHORT).show();
+//          }
+        }
+        /*if (getFragmentManager().findFragmentById(R.id.linearLayoutDetailsFragment) != null) {
+          //DetailsFragment
+          //updateContent("aries");
+          Toast.makeText(ListFragment.this.getContext(),"CLICKED HERE",Toast.LENGTH_SHORT).show();
+
+        }else{
+          String sign = (String) listView.getItemAtPosition(position);
+          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + sign + "/"));
+          browserIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+          startActivity(browserIntent);
+//          String itemValue = (String) listView.getItemAtPosition(position);
+//          Intent intent = new Intent(getActivity(), DetailsActivity.class);
+//          intent.putExtra(SIGN, itemValue);
+//          startActivity(intent);
+        }*/
+
       }
     });
   }
