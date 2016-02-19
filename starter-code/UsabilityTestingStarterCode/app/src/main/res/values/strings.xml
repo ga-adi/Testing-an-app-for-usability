@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">UsabilityTestingStarterCode</string>
+  <string name="app_name">Zodiac App</string>
   <string name="action_settings">Settings</string>
   <string-array name="signs">
     <item>aries</item>
