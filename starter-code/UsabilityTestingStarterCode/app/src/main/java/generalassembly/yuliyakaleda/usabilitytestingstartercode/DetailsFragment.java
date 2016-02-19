@@ -1,34 +1,103 @@
 package generalassembly.yuliyakaleda.usabilitytestingstartercode;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-
 public class DetailsFragment extends Fragment {
 
-    private WebView mWebView;
+    // http://stackoverflow.com/questions/9161192/webviewfragment-webview-is-null-after-doing-a-fragmenttransaction
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        MainActivity mainActivity = (MainActivity) getActivity();
-        String url = "http://www.horoscopedates.com/zodiac-signs/" + mainActivity.getUrl() + "/";
-        View view = inflater.inflate(R.layout.details_activity_layout, container, false);
-        Log.i("URL", url);
-        updateContent(view, url);
-        return view;
+    private WebView mWebView;
+    private boolean mIsWebViewAvailable;
+    private String mUrl = null;
+
+    /**
+     * Creates a new fragment which loads the supplied url as soon as it can
+     *
+     * @param url the url to load once initialised
+     */
+    public DetailsFragment(String url) {
+        super();
+        mUrl = url;
     }
 
-    public void updateContent(View view, String sign) {
-        // TODO: Finish the method which will open a webview and redirect the user to the website
-        // TODO: to read about the sign that was clicked in the ListView
-        ((WebView) view.findViewById(R.id.webview)).loadUrl(sign);
+    /**
+     * Called to instantiate the view. Creates and returns the WebView.
+     */
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (mWebView != null) {
+            mWebView.destroy();
+        }
+        mWebView = new WebView(getActivity());
+        mWebView.loadUrl(mUrl);
+        mIsWebViewAvailable = true;
+        return mWebView;
+    }
+
+    /**
+     * Convenience method for loading a url. Will fail if {@link View} is not initialised (but won't throw an {@link Exception})
+     *
+     * @param url
+     */
+    public void loadUrl(String url) {
+        if (mIsWebViewAvailable) getWebView().loadUrl(mUrl = url);
+        else
+            Log.w("ImprovedWebViewFragment", "WebView cannot be found. Check the view and fragment have been loaded.");
+    }
+
+    /**
+     * Called when the fragment is visible to the user and actively running. Resumes the WebView.
+     */
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
+    /**
+     * Called when the fragment is no longer resumed. Pauses the WebView.
+     */
+    @Override
+    public void onResume() {
+        mWebView.onResume();
+        super.onResume();
+    }
+
+    /**
+     * Called when the WebView has been detached from the fragment.
+     * The WebView is no longer available after this time.
+     */
+    @Override
+    public void onDestroyView() {
+        mIsWebViewAvailable = false;
+        super.onDestroyView();
+    }
+
+    /**
+     * Called when the fragment is no longer in use. Destroys the internal state of the WebView.
+     */
+    @Override
+    public void onDestroy() {
+        if (mWebView != null) {
+            mWebView.destroy();
+            mWebView = null;
+        }
+        super.onDestroy();
+    }
+
+    /**
+     * Gets the WebView.
+     */
+    public WebView getWebView() {
+        return mIsWebViewAvailable ? mWebView : null;
     }
 }
