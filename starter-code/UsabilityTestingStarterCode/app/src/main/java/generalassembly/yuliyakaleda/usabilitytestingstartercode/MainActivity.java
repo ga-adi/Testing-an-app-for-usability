@@ -7,33 +7,27 @@ import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-  private String mURL = "http://www.google.com";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        ListFragment listFragment = new ListFragment();
+        fragmentTransaction.add(R.id.frame_layout, listFragment);
+        fragmentTransaction.commit();
 
-    ListFragment listFragment = new ListFragment();
-    fragmentTransaction.add(R.id.frame_layout, listFragment);
-    fragmentTransaction.commit();
+        //TODO: Create a separate layout xml file for tablet devices.
+    }
 
-    //TODO: Create a separate layout xml file for tablet devices.
-  }
-
-  public void swapFragment(String listItem){
-    this.mURL = listItem;
-    DetailsFragment detailsFragment = new DetailsFragment();
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.frame_layout, detailsFragment);
-    transaction.addToBackStack(null);
-    transaction.commit();
-  }
-
-  public String getUrl(){
-    return mURL;
-  }
+    public void swapFragment(String prefix) {
+        String url = "http://www.horoscopedates.com/zodiac-signs/" + prefix + "/";
+        DetailsFragment detailsFragment = new DetailsFragment(url);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, detailsFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }
