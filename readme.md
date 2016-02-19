@@ -5,67 +5,69 @@
 
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Usability Testing Lab
 
-## Exercise  
+## USER Testing
 
-You'll be running your own usability test and use the results of this test to give you guidance as you iterate on an application. 
+	Can you click the items on the list?
 
-This lab is to be done in pairs. Using the starter code provided, pairs should run the app on a handset and on a tablet. One of the students will facilitate the test and write down the questions about UX/UI aspects of the app. The other student will be the "tester" and test the app.
+	What happens when you click the items
 
-The person who is interviewing should create a list of features he/she will ask the other person to test, step by step. When the list is ready and all the comments are put down, the team will work to improve the app using the comments and feedback from the interview.
+	Is the list scrollable?
 
-#### Requirements
+	How does the app show in landscape?
 
-This lab is broken down into two parts: one part for preparing and testing the application and one part to act on the feedback from the test.  Take note of the suggested timing breakdowns and try note to look at part two until part one is complete.
+	The list is saved and the list still works (no change)
 
-##### Part One: Testing
-
-*Before testing:*  
-Steps for the person who will interview:
-- create a list of all the necessary features to test (5 mins)
-- create a list of all the steps to ask the other person to perform (5 mins)
-
-Steps for the person who will test:
-- while the other person is writing down the questions, create a list of potential use cases of the app (5 mins)
-- create a list of additional features to be added (5 mins).
-
-*While testing:*
-- the person who tests the app should test every button, view and corner of the app, the other one should write down the comments
-- the person who tests the app should suggest ways to improve the app, the other one should put the suggestions down
+	What happens when you press back ?
 
 
-##### Part Two: Coding to improve the app
+###JACKIE
+ 1. Did you find it easy to open the app?
 
-(You should have come up with these improvements during the test!)
+ App crashed when clicked on item in emulator
 
-- the app should support tablets and handsets
-- when the item in the listVew is clicked, the app should open the weblink with information about the clicked sign
 
-#### Starter code
+ 2. Did you find it easy to view and read?
+ would've expected information to be within the app and not take you to google chrome.
 
-Grab [starter code](starter-code/UsabilityTestingStarterCode) and import it into Android Studio.
+ Also when you hit the back button from Chrome the app is blank
 
-Included in this lab are the following:
+ There's no point to download the app if it takes you to the webview
+ also there's the dates pertaining to what zodiac sign you match with.
 
-* Two activities: **Main Activity** and **Deatils Activity**.
+ Add a calendar or edit text field to check your zodiac by your birthday
 
-	* Main Activity is an empty activity. It does not require any code added. Your task is to add a new layout for tablet devices.
-	* Details Activity should send an implicit intent to bring up a webView and open a link with the information about the corresponding
-	horoscope sign.
+ Add things to the app like images or action bar.
 
-* Two fragments: **List Fragment** and **Details Fragment**.
-These are the classes that require most of the work done. In the imported project you will find TODO: to finish.
 
-* Three layout file: **activity_main.xml**, **fragment_layout**, **details_activity_layout.xml**.
-You have to add **details_fragment_layout.xml** and **activity_main.xml(large)**.
 
-#### Deliverable
 
-An Android app that follows the requirements above. There are no design requirements; feel free to play around with color, font, backgrounds, etc.
+ 3. How does the app make you feel?
 
-Post the project on GitHub. Ensure that the project builds and runs successfully.
 
-<p align="center">
-	<img src="screenshots/handset_main.png" height="400px" /> <img src="screenshots/handset_details.png" height="400px" /> <img src="screenshots/tablet.png" height="400px" />
-</p>
+ 4. Would you download this app?
+
+
+ 5. Would you recommend this app to a friend?
+
+6. What would you change ?
+###Rob  
+1. Did you find it easy to open the app?
+
+
+2. Did you find it easy to view and read?
+		wouldve expected information to be within the app and not take you to google chrome.
+
+		Also when you hit the back button from Chrome the app is blank
+
+
+
+3. How does the app make you feel?
+
+
+4. Would you download this app?
+
+
+5. Would you recommend this app to a friend?
+
 
 If you're having a lot of trouble, feel free to peek at the [solution](solution-code).
