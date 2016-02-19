@@ -1,5 +1,7 @@
 package generalassembly.yuliyakaleda.usabilitytestingstartercode;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +17,19 @@ import android.widget.ListView;
 public class ListFragment extends Fragment {
   private static final String SIGN = "sign";
   private ListView listView;
+  OnZodiacSelectedListener mCallBack;
+
+  public interface OnZodiacSelectedListener {
+    public void onZodiacSelected(String sign);
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
+    if(context instanceof OnZodiacSelectedListener){
+      mCallBack = (OnZodiacSelectedListener) context;
+    }
+  }
 
   @Nullable @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,9 +56,7 @@ public class ListFragment extends Fragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String itemValue = (String) listView.getItemAtPosition(position);
-        Intent intent = new Intent(getActivity(), DetailsActivity.class);
-        intent.putExtra(SIGN, itemValue);
-        startActivity(intent);
+        mCallBack.onZodiacSelected(itemValue);
       }
     });
   }
