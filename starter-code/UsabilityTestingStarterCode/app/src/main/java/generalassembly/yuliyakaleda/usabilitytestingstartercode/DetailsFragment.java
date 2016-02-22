@@ -26,7 +26,7 @@ public class DetailsFragment extends Fragment{
     WebView webView= (WebView)view.findViewById(R.id.webViewFragment);
     Bundle bundle1= this.getArguments();
     if(bundle1!=null && bundle1.getString("sign")!=null) {
-      String myString= bundle1.getString("sign");
+      String myString= bundle1.getString("sign").toLowerCase();
       webView.getSettings().setJavaScriptEnabled(true);
       webView.setWebViewClient(new MyWebClient());
       webView.loadUrl(String.valueOf(Uri.parse("http://www.horoscopedates.com/zodiac-signs/" + myString + "/")));

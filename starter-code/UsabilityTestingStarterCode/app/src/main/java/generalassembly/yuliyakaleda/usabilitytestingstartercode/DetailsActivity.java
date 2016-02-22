@@ -24,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
     String sign = " ";
 
     if (extras != null) {
-      sign = extras.getString(SIGN);
+      sign = extras.getString(SIGN).toLowerCase();
       mWebView=(WebView)findViewById(R.id.webView);
       mWebView.setWebViewClient(new MyWebClient());
       mWebView.getSettings().setJavaScriptEnabled(true);

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -73,7 +74,9 @@ public class ListFragment extends Fragment {
 
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          String itemValue = (String) listView.getItemAtPosition(position);
+        //  String itemValue = (String) listView.getItemAtPosition(position);
+          TextView zodiacText = (TextView) view.findViewById(R.id.zodiac_name);
+          String itemValue = zodiacText.getText().toString();
           mCallback.onSymbolSelected(itemValue);
 //        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
 //            Intent intent = new Intent(getActivity(), DetailsActivity.class);
